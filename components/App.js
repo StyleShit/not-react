@@ -17,7 +17,7 @@ export default function App() {
 
   return createElement(
     "div",
-    { id: "app-inner" },
+    { id: "app-inner", className: "app-inner" },
     createElement(Container, { appTitle }),
     createElement(Br),
     memoedValue

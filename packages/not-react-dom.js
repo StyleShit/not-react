@@ -39,6 +39,13 @@ function renderElement(type, props = {}) {
       return;
     }
 
+    // DOM attributes (e.g. `className`, `htmlFor`, etc).
+    if (prop in domElement) {
+      domElement[prop] = value;
+
+      return;
+    }
+
     // Regular Attributes.
     domElement.setAttribute(prop, value);
   });
