@@ -20,8 +20,8 @@ You can see a live demo with all of the code [here](https://githubbox.com/StyleS
 Basically the same as React, without the JSX.
 
 ```js
-import { createElement, render } from "not-react";
 import * as NotReactDOM from "not-react-dom";
+import { createElement, render } from "not-react";
 
 const App = () => {
   return createElement(
@@ -31,7 +31,7 @@ const App = () => {
   );
 };
 
-render(App(), document.getElementById("root"));
+render(App, document.getElementById("root"));
 ```
 
 ## Available Hooks:
