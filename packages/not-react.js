@@ -54,7 +54,7 @@ export function useEffect(callback, deps) {
   const [prevDeps = [], prevCleanup] = hooks[thisHook] ?? [];
 
   const isFirst = !hooks[thisHook];
-  const hasDepsChanged = deps.some((d) => !prevDeps.includes(d));
+  const hasDepsChanged = deps.some((d, i) => !Object.is(d, prevDeps[i]));
 
   const shouldRun = isFirst || hasDepsChanged;
 
