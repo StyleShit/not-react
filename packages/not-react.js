@@ -97,6 +97,10 @@ export function useMemo(factory, deps) {
   return state;
 }
 
+export function useCallback(callback, deps) {
+  return useMemo(() => callback, deps);
+}
+
 // TODO: Find a better way to keep track of the current render function,
 // so we'll be able to render multiple apps at the same time.
 export function setRender(renderFn) {

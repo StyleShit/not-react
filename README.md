@@ -43,3 +43,4 @@ NotReactDOM.render(App, document.getElementById("root"));
 - `useRef`
 - `useMemo`
 - `useReducer`
+- `useCallback`

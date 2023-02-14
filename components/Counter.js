@@ -1,4 +1,4 @@
-import { createElement, useReducer } from "not-react";
+import { createElement, useCallback, useReducer } from "not-react";
 
 export default function Counter() {
   console.log("render <Counter />");
@@ -14,13 +14,17 @@ export default function Counter() {
     }
   }, 0);
 
+  // There is no reason to use `useCallback` here, it's just for demonstration.
+  const increment = useCallback(() => dispatch("increment"), []);
+  const decrement = useCallback(() => dispatch("decrement"), []);
+
   return createElement(
     "div",
     {},
-    createElement("button", { onClick: () => dispatch("decrement") }, "-"),
+    createElement("button", { onClick: decrement }, "-"),
     " ",
     count,
     " ",
-    createElement("button", { onClick: () => dispatch("increment") }, "+")
+    createElement("button", { onClick: increment }, "+")
   );
 }
