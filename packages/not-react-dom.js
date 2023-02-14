@@ -52,7 +52,7 @@ function renderElement(type, props = {}) {
 
   // Render children recursively.
   props.children.forEach((child) => {
-    if (typeof child === "string") {
+    if (typeof child === "string" || typeof child === "number") {
       domElement.appendChild(document.createTextNode(child));
     } else {
       domElement.appendChild(renderElement(child.type, child.props));
