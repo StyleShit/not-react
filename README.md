@@ -21,9 +21,11 @@ Basically the same as React, without the JSX.
 
 ```js
 import * as NotReactDOM from "not-react-dom";
-import { createElement, render } from "not-react";
+import { createElement, useState } from "not-react";
 
 const App = () => {
+  const [count, setCount] = useState(0);
+
   return createElement(
     "div",
     { className: "app" },
@@ -31,7 +33,7 @@ const App = () => {
   );
 };
 
-render(App, document.getElementById("root"));
+NotReactDOM.render(App, document.getElementById("root"));
 ```
 
 ## Available Hooks:
