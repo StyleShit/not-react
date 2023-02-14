@@ -1,16 +1,9 @@
-import { useState, createElement } from "not-react";
+import { createElement } from "not-react";
 
-export default function Button() {
+export default function Button(props) {
   console.log("render <Button />");
 
-  const [count, setCount] = useState(0);
-  const text = "Clicks: " + count;
-
-  return createElement(
-    "button",
-    {
-      onClick: () => setCount((prev) => prev + 1),
-    },
-    text
-  );
+  return createElement("button", {
+    onClick: () => props.onClick(),
+  });
 }

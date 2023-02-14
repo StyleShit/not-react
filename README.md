@@ -42,3 +42,4 @@ NotReactDOM.render(App, document.getElementById("root"));
 - `useEffect`
 - `useRef`
 - `useMemo`
+- `useReducer`

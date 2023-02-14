@@ -12,24 +12,22 @@ export function createElement(type, props = {}, ...children) {
   };
 }
 
-export function useState(initialState) {
+export function useReducer(reducer, initialState) {
   const thisHook = currentHook++;
 
   if (!hooks[thisHook]) {
-    hooks[thisHook] =
+    initialState =
       typeof initialState === "function" ? initialState() : initialState;
+
+    hooks[thisHook] = [initialState, reducer];
   }
 
-  const state = hooks[thisHook];
+  const dispatch = (newState) => {
+    const [prevState, reducer] = hooks[thisHook];
 
-  const setState = (newState) => {
-    const prevState = hooks[thisHook];
+    newState = reducer(newState, prevState);
 
-    if (typeof newState === "function") {
-      newState = newState(prevState);
-    }
-
-    hooks[thisHook] = newState;
+    hooks[thisHook][0] = newState;
 
     // Avoid infinite rendering when the state is the same.
     if (!Object.is(prevState, newState)) {
@@ -37,7 +35,17 @@ export function useState(initialState) {
     }
   };
 
-  return [state, setState];
+  const [state] = hooks[thisHook];
+
+  return [state, dispatch];
+}
+
+export function useState(initialState) {
+  const reducer = (newState, prevState) => {
+    return typeof newState === "function" ? newState(prevState) : newState;
+  };
+
+  return useReducer(reducer, initialState);
 }
 
 export function useEffect(callback, deps) {
