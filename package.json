@@ -1,0 +1,20 @@
+{
+  "name": "not-react",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StyleShit/not-react.git"
+  },
+  "author": "StyleShit",
+  "homepage": "https://github.com/StyleShit/not-react#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-transform-react-jsx": "^7.20.13"
+  },
+  "scripts": {
+    "build": "npm run build:index && npm run build:components",
+    "build:index": "babel index.js --out-dir dist",
+    "build:components": "babel components --out-dir dist/components"
+  }
+}

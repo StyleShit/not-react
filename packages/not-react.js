@@ -2,7 +2,16 @@ let hooks = [];
 let currentHook = 0;
 let render = null;
 
-export function createElement(type, props = {}, ...children) {
+// Support `import NotReact from "not-react";`
+export default {
+  createElement,
+};
+
+export function createElement(type, props = null, ...children) {
+  if (!props) {
+    props = {};
+  }
+
   return {
     type,
     props: {

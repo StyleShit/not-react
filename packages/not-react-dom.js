@@ -14,12 +14,15 @@ export function render(app = currentApp, root = currentRoot) {
   NotReact.setRender(() => render());
 }
 
-function renderElement(type, props = {}) {
+function renderElement({ type, props = {} }) {
   // Functional component.
   if (typeof type === "function") {
     const element = type(props);
 
-    return renderElement(element.type, element.props);
+    return renderElement({
+      type: element.type,
+      props: element.props,
+    });
   }
 
   const domElement = document.createElement(type);
@@ -55,7 +58,9 @@ function renderElement(type, props = {}) {
     if (typeof child === "string" || typeof child === "number") {
       domElement.appendChild(document.createTextNode(child));
     } else {
-      domElement.appendChild(renderElement(child.type, child.props));
+      domElement.appendChild(
+        renderElement({ type: child.type, props: child.props })
+      );
     }
   });
 

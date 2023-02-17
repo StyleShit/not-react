@@ -1,8 +1,6 @@
 import NotReact, { useCallback, useReducer } from "not-react";
-
 export default function Counter() {
   console.log("render <Counter />");
-
   const [count, dispatch] = useReducer((action, prev) => {
     switch (action) {
       case "increment":
@@ -17,12 +15,9 @@ export default function Counter() {
   // There is no reason to use `useCallback` here, it's just for demonstration.
   const increment = useCallback(() => dispatch("increment"), []);
   const decrement = useCallback(() => dispatch("decrement"), []);
-
-  return (
-    <div>
-      <button onClick={decrement}>-</button>
-      {` ${count} `}
-      <button onClick={increment}>+</button>
-    </div>
-  );
+  return NotReact.createElement("div", null, NotReact.createElement("button", {
+    onClick: decrement
+  }, "-"), ` ${count} `, NotReact.createElement("button", {
+    onClick: increment
+  }, "+"));
 }
