@@ -10,11 +10,15 @@
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
-    "@babel/plugin-transform-react-jsx": "^7.20.13"
+    "@babel/plugin-transform-react-jsx": "^7.20.13",
+    "parcel": "^2.8.3"
   },
   "scripts": {
-    "build": "npm run build:index && npm run build:components",
-    "build:index": "babel index.js --out-dir dist",
-    "build:components": "babel components --out-dir dist/components"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "alias": {
+    "not-react": "./src/packages/not-react",
+    "not-react-dom": "./src/packages/not-react-dom"
   }
 }
