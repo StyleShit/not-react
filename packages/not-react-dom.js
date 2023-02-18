@@ -19,10 +19,8 @@ function renderElement({ type, props = {} }) {
   if (typeof type === "function") {
     const element = type(props);
 
-    return renderElement({
-      type: element.type,
-      props: element.props,
-    });
+    type = element.type;
+    props = element.props;
   }
 
   const domElement = document.createElement(type);
