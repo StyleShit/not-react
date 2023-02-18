@@ -14,11 +14,11 @@
     "parcel": "^2.8.3"
   },
   "scripts": {
-    "dev": "parcel src/index.html",
+    "dev": "parcel src/index.html --open",
     "build": "parcel build src/index.html"
   },
   "alias": {
-    "not-react": "./src/packages/not-react",
-    "not-react-dom": "./src/packages/not-react-dom"
+    "not-react": "/src/packages/not-react",
+    "not-react-dom": "/src/packages/not-react-dom"
   }
 }
