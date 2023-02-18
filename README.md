@@ -56,7 +56,7 @@ NotReactDOM.render(<App />, document.getElementById("root"));
 > plugin to your Babel config.
 >
 > The difference is that you'll need to set the `pragma` option to `NotReact.createElement`
-> (see the [.babelrc](./.babelrc)) file), and import `NotReact` instead of `React`.
+> (see the [.babelrc](./.babelrc) file), and import `NotReact` instead of `React`.
 
 ## Available Hooks:
 
