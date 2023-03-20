@@ -24,7 +24,7 @@ export function createElement(type, props = null, ...children) {
 export function useReducer(reducer, initialState) {
   const thisHook = currentHook++;
 
-  if (!hooks[thisHook]) {
+  if (!(thisHook in hooks)) {
     initialState =
       typeof initialState === "function" ? initialState() : initialState;
 
@@ -62,7 +62,7 @@ export function useEffect(callback, deps) {
 
   const [prevDeps = [], prevCleanup] = hooks[thisHook] ?? [];
 
-  const isFirst = !hooks[thisHook];
+  const isFirst = !(thisHook in hooks);
   const hasDepsChanged = deps.some((d, i) => !Object.is(d, prevDeps[i]));
 
   const shouldRun = isFirst || hasDepsChanged;
